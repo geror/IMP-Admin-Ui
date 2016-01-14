@@ -103,6 +103,7 @@ angular
     })
       .state('login',{
         templateUrl:'views/admin/loginForm.html',
+        controller: 'authenticationCtrl',
         url:'/login'
     })
       .state('dashboard.chart',{

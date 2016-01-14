@@ -5,24 +5,25 @@
     'use strict';
 
     angular.module('sbAdminApp')
-        .controller('authenticationCtrl', ['$scope', '$window', '$location','user','$uibModal', '$rootScope', authenticationCtrl]);
+        .controller('authenticationCtrl', ['$scope', '$window','$state','user', '$rootScope', authenticationCtrl]);
 
-    function authenticationCtrl($scope, $window, $location, user, $uibModal, logger, $timeout, sessionStorage, $rootScope) {
+    function authenticationCtrl($scope, $window, $state, user, $rootScope) {
         $scope.main={
-            password:"",
-            email:""
+            email:"",
+            password:""
         };
 
         $scope.disableButton = false;
 
-        $scope.login = function(username,password) {
-
-            var userSize,passSize;
-            userSize = username.length;
-            passSize = password.length;
-
-            $scope.disableButton = true;
-
+        $scope.login = function(email,password) {
+            console.log("LOGIN METHOD");
+            console.log(email);
+            console.log(password);
+            if(email == "admin" && password == "admin"){
+                $state.go("dashboard.home");
+            }else{
+                $state.go("login");
+            }
 
         };
 
